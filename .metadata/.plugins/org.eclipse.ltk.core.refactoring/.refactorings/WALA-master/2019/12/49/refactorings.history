@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;primordial.jar.model&apos; to &apos;WALA_Test&apos;&#x0D;&#x0A;- Original project: &apos;WALA-master&apos;&#x0D;&#x0A;- Destination element: &apos;WALA_Test&apos;&#x0D;&#x0A;- Original element: &apos;primordial.jar.model&apos;" description="Copy file" destination="=WALA_Test" element1="com.ibm.wala.core/lib/primordial.jar.model" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1575345640337" units="0" version="1.0"/>
+</session>

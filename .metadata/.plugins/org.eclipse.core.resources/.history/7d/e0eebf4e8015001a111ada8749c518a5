@@ -1,0 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class App0 {
+
+    public void Hello(){
+        system.out.println("Hello World!");
+    }
+
+	public static void main(String[] args){
+
+        new App0.Hello();
+	}
+}
+

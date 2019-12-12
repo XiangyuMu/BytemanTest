@@ -1,0 +1,10 @@
+package jlu;
+
+import java.util.Date;
+
+public class parsedExamplre {
+
+	public static void main(String[] args) {
+		System.out.println(new Date());
+	}
+}

@@ -1,0 +1,40 @@
+package searchOnInternet;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import com.jlu.redcueExample.Element;
+import com.jlu.redcueExample.ElemwntList;
+
+
+public class Example9 {
+
+	List<TwoTuple> output = new ArrayList<TwoTuple>() ;
+	String v = "";
+	
+	String userId = "";
+	String itermScore = "";
+	public void reduce(ElemwntList list) {
+		String key = (String)list.getList().get(0).getList().get(0);
+
+
+		        Double totalScore = 0.0;
+		        for (Element value : list.getList()) {
+		            totalScore +=(Integer) value.getList().get(1);
+		        }
+		        String[] strArr = key.toString().split(":");
+		        userId=(strArr[0]);
+		        itermScore=(strArr[1] + ":" + totalScore);
+		        output.add(new TwoTuple(userId, itermScore));
+		    
+	}
+
+
+}

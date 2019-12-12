@@ -1,0 +1,8 @@
+RULE testOtherClass
+CLASS Jlu.BytemanTest.App1
+METHOD reduce(ElemwntList)
+AFTER READ $value
+BIND value=$key
+IF true
+DO traceln("result:"+$totalStr)
+ENDRULE

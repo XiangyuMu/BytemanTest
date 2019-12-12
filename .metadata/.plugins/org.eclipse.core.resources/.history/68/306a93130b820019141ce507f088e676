@@ -1,0 +1,12 @@
+package jlu;
+
+import java.util.Date;
+
+public class parsedExamplre {
+	public static int ONE_BILLION = 1000000000;
+	public static int TWO_BILLION = 2_000_000_000;
+
+	public static void main(String[] args) {
+		System.out.println(new Date());
+	}
+}

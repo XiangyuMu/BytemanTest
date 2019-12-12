@@ -1,0 +1,31 @@
+RULE trace arg1
+CLASS Jlu.BytemanTest.Main
+METHOD add(int,int)
+AT ENTRY
+IF true
+DO traceln("arg1=" + $1 + " arg2=" + $2)
+ENDRULE
+
+RULE trace return value1
+CLASS Jlu.BytemanTest.Main
+METHOD add(int,int)
+AT EXIT
+IF true
+DO traceln("Return value: "+$!)
+ENDRULE
+
+RULE trace arg2
+CLASS Jlu.BytemanTest.Main
+METHOD add(int,int,int)
+AT ENTRY
+IF true
+DO traceln("arg1="+$1+"arg2="+$2 +"arg3="+$3)
+ENDRULE
+
+RULE trace return value2
+CLASS Jlu.BytemanTest.Main
+METHOD add(int,int,int)
+AT EXIT
+IF true
+DO traceln("Return value: "+$!)
+ENDRULE

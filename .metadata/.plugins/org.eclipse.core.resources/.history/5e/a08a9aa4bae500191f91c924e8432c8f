@@ -1,0 +1,48 @@
+package method;
+
+import java.io.File;
+import java.util.Scanner;
+
+
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.visitor.ModifierVisitor;
+import com.github.javaparser.ast.visitor.Visitable;
+
+public class RelatedToPosition {
+	
+	
+	public static void main(String[] args) throws Exception {
+		String FILE_PATH = "src/main/java/searchOnInternet/";
+		String Filename = "";
+		System.out.println("请输入文件名称：");
+		Scanner scan = new Scanner(System.in);
+		Filename = scan.next();
+		CompilationUnit cu = StaticJavaParser.parse(new File(FILE_PATH+Filename+".java"));
+		ModifierVisitor<?> checkProgramVisitor = new checkProgram();
+		checkProgramVisitor.visit(cu, null);
+		
+	}
+	
+	private static class checkProgram extends ModifierVisitor<Void>{
+		@Override
+		public CompilationUnit visit(CompilationUnit cu, Void arg) {
+			// TODO Auto-generated method stub
+			super.visit(cu, arg);
+			checkType(cu);
+			return cu;
+		}
+	}
+	
+	private static CompilationUnit checkType(CompilationUnit cu) {
+		MethodDeclaration reduceMd  = new MethodDeclaration();
+		
+		
+//		if(md.getNameAsString().equals("reduce")) {
+//			reduceMd = md;
+//		}
+//		System.out.println(reduceMd);
+		return cu;
+	}
+}

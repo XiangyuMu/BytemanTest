@@ -1,0 +1,59 @@
+package jlu;
+
+import java.io.FileInputStream;
+import java.util.regex.Pattern;
+
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.expr.IntegerLiteralExpr;
+import com.github.javaparser.ast.visitor.ModifierVisitor;
+import com.github.javaparser.ast.visitor.VoidVisitor;
+
+import jlu.test.MethodVisitor;
+
+public class ModifyingVisitorComplete {
+	
+	public static void main(String[] args) throws Exception{
+        FileInputStream in = new FileInputStream("src/main/java/jlu/parsedExamplre.java");
+
+        // parse the file
+        CompilationUnit cu = StaticJavaParser.parse(in);
+
+
+        // prints the resulting compilation unit to default system output
+//        System.out.println(cu.toString());
+        ModifierVisitor<?> numericLiteralVisitor = new IntegerLiteralModifier();
+        numericLiteralVisitor.visit(cu, null);
+       
+
+//        cu.accept(new MethodVisitor(), null);
+    }
+	
+	
+	
+	private static final Pattern LOOK_AHEAD_THREE =
+			Pattern.compile("(\\d)(?=(\\d{3})+$)");
+	
+	
+	static String formatWithUnderscores(String value){
+		String withoutUnderscores = value.replaceAll("_", "");
+		return LOOK_AHEAD_THREE.matcher(withoutUnderscores).replaceAll("$1_");
+		}
+	
+	
+	private static class IntegerLiteralModifier extends ModifierVisitor<Void>{
+		@Override
+		public FieldDeclaration visit(FieldDeclaration fd,Void arg) {
+			super.visit(fd, arg);
+			fd.getVariables().forEach(v ->
+			v.getInitializer().ifPresent(i -> {
+			if (i instanceof IntegerLiteralExpr) {
+			v.setInitializer(formatWithUnderscores(((IntegerLiteralExpr) i).getValue()));
+			}
+			}));
+			return fd;
+		}
+	}
+
+}

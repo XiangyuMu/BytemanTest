@@ -1,0 +1,27 @@
+package searchOnInternet;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+
+import com.jlu.redcueExample.Element;
+import com.jlu.redcueExample.ElemwntList;
+//输入<String,String>(key,value)
+//计算key对应的ip的个数
+//可交换
+public class Example03 {
+	List<TwoTuple> output = new ArrayList<TwoTuple>() ;
+	public void reduce(ElemwntList list) {
+        //使用set集合记性独立ip统计
+		String key = (String)list.getList().get(0).getList().get(0);
+        Set<String> ips = new HashSet<String>();
+        for (Element ip : list.getList()) {
+            ips.add(ip.getList().get(1).toString());
+        }
+        int count =ips.size();
+        output.add(new TwoTuple(key,""+count));
+    }
+
+}
