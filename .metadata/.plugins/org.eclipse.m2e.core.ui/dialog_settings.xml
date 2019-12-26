@@ -71,6 +71,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="E:\eclipse-workspace\AntlrTest"/>
 			<item value="E:\eclipse-workspace\caseReduce"/>
 			<item value="E:\eclipse-workspace\MavenDemo"/>
 		</list>

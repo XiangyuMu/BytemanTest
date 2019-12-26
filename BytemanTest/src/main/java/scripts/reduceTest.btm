@@ -1,8 +1,7 @@
 RULE testOtherClass
-CLASS Jlu.BytemanTest.App1
+CLASS Jlu.BytemanTest.App0
 METHOD reduce(ElemwntList)
-AFTER READ $value
-BIND value=$key
+AFTER WRITE $list ALL
 IF true
-DO traceln("result:"+$totalStr)
+DO traceln("here read list"+$list.getList().get(1))
 ENDRULE

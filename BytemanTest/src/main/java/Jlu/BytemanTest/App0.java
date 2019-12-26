@@ -28,6 +28,7 @@ public class App0 {
         StringBuilder totalStr = new StringBuilder();
         key = "2";
         for (Element value : list.getList()) {
+        	System.out.println("in front of getList()");
             totalStr.append(value.getList().get(1).toString()).append(" ");
         }
         String v =totalStr.toString();
